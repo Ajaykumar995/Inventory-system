@@ -2,75 +2,116 @@
 
 Enterprise-grade inventory management for pharmacies, supermarkets, and retail warehouses.
 
-## Module 1: Authentication & RBAC (Complete)
+Built with **FastAPI**, **React**, and **SQLAlchemy** — includes RBAC, stock tracking, POS sales, expiry alerts, demand prediction, and CSV reports.
 
-### Quick Start
+**Author:** [Ajay Kumar](https://github.com/Ajaykumar995)
+
+---
+
+## Features
+
+- Authentication & role-based access (5 roles)
+- Products, categories, and image upload
+- Inventory & stock movements with audit trail
+- Purchase orders & supplier management
+- Point of Sale (POS) & invoicing
+- Expiry management & notifications
+- Stock prediction & reorder suggestions
+- Reports (CSV export), global search, user management
+
+---
+
+## Tech Stack
+
+| Layer | Technologies |
+|-------|----------------|
+| Backend | Python, FastAPI, SQLAlchemy, Alembic, JWT, bcrypt |
+| Frontend | React 19, Vite, TypeScript, Tailwind CSS 4 |
+| Database | SQLite (dev) / PostgreSQL (production) |
+| Charts / 3D | Recharts, Three.js |
+
+---
+
+## Quick Start
+
+### Backend
 
 ```bash
-# Backend
 cd backend
 python -m venv venv
-venv\Scripts\activate        # Windows
+venv\Scripts\activate          # Windows
 pip install -r requirements.txt
 copy .env.example .env
 uvicorn app.main:app --reload
+```
 
-# Frontend
+### Frontend
+
+```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-- API Docs: http://localhost:8000/docs
-- Frontend: http://localhost:5173
+| Service | URL |
+|---------|-----|
+| App UI | http://localhost:5173 |
+| API Docs | http://localhost:8000/docs |
 
-### Demo Login (auto-seeded on first run)
+> On Windows PowerShell, use `npm.cmd run dev` if `npm` is blocked.
+
+---
+
+## Default Accounts
+
+Demo data loads automatically on first run.
 
 | Username | Password | Role |
 |----------|----------|------|
 | `admin` | `admin123456` | Admin |
 | `manager` | `manager123` | Inventory Manager |
 | `cashier` | `cashier123` | Employee |
-
-Reload demo data: `python -m app.database.seed --force`
-
-Add only Ajay & Arif catalog: `python -m app.database.seed_ajay_arif`
-
-| Username | Password | Role |
-|----------|----------|------|
 | `ajay` | `ajay123456` | Store Manager |
 | `arif` | `arif123456` | Inventory Manager |
 
-**Ajay products:** Honey, Face Wash, Green Tea, Almonds (brand: Ajay Naturals / Ajay Care)  
-**Arif products:** Pain Balm, Multivitamin, Antiseptic, Cough Syrup, Vitamin D3, ORS (brand: Arif Pharma)
+**Seed commands** (from `backend/` folder):
 
-## Architecture
+```bash
+python -m app.database.seed --force          # reload full demo data
+python -m app.database.seed_ajay_arif        # sync Ajay & Arif catalog only
+```
+
+---
+
+## Project Structure
 
 ```
 inventory-system/
-├── backend/          # FastAPI + SQLAlchemy
-└── frontend/         # React + Vite + Tailwind
+├── backend/                 # FastAPI API, models, services, tests
+│   └── app/
+│       ├── routers/
+│       ├── services/
+│       ├── models/
+│       └── database/
+└── frontend/                # React SPA
+    └── src/
+        ├── pages/
+        ├── components/
+        └── services/
 ```
 
-## Modules Roadmap
+---
 
-| # | Module | Status |
-|---|--------|--------|
-| 1 | Authentication & RBAC | ✅ Done |
-| 2 | Products & Categories | ✅ Done |
-| 3 | Inventory & Stock | ✅ Done |
-| 4 | Purchase Orders & Suppliers | ✅ Done |
-| 5 | Sales & Invoicing | ✅ Done |
-| 6 | Expiry Management & Notifications | ✅ Done |
-| 7 | Prediction Engine | ✅ Done |
-| 8 | Reports & CSV Export | ✅ Done |
-| 9 | Global Search | ✅ Done |
-| 10 | Activity / Audit Log | ✅ Done |
-| 11 | User Management (Admin) | ✅ Done |
-| 12 | Profile Settings | ✅ Done |
+## User Roles
 
-### Roles (5 total)
+```
+admin  →  inventory_manager  →  store_manager  →  employee  →  supplier
+```
 
-`admin` → `inventory_manager` → `store_manager` → `employee` → `supplier`
+Admins can create users and assign roles from the **Users** page in the app.
 
-Admin can create users and assign roles from **Users** page in the app.
+---
+
+## License
+
+This project is for educational and portfolio use.
