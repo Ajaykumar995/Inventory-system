@@ -62,24 +62,7 @@ npm run dev
 
 ---
 
-## Default Accounts
 
-Demo data loads automatically on first run.
-
-| Username | Password | Role |
-|----------|----------|------|
-| `admin` | `admin123456` | Admin |
-| `manager` | `manager123` | Inventory Manager |
-| `cashier` | `cashier123` | Employee |
-| `ajay` | `ajay123456` | Store Manager |
-| `arif` | `arif123456` | Inventory Manager |
-
-**Seed commands** (from `backend/` folder):
-
-```bash
-python -m app.database.seed --force          # reload full demo data
-python -m app.database.seed_ajay_arif        # sync Ajay & Arif catalog only
-```
 
 ---
 
