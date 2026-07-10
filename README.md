@@ -26,7 +26,7 @@ Built with **FastAPI**, **React**, and **SQLAlchemy** — includes RBAC, stock t
 | Layer | Technologies |
 |-------|----------------|
 | Backend | Python, FastAPI, SQLAlchemy, Alembic, JWT, bcrypt |
-| Frontend | React 19, Vite, TypeScript, Tailwind CSS 4 |
+| Frontend | React 19, Vite, **JavaScript**, Tailwind CSS 4 |
 | Database | SQLite (dev) / PostgreSQL (production) |
 | Charts / 3D | Recharts, Three.js |
 
